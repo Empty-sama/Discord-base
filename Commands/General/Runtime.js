@@ -13,7 +13,7 @@ module.exports = {
         return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
         };
         const uptime = formatTime(process.uptime());
-        const text = `Konnichiwa ${interaction.user}, I am alive, in fact I've been alive for ${uptime}!`;
+        const text = `Konnichiwa ${interaction.user}, dependable aren't I? I've been running for ${uptime}!`;
 		await interaction.reply(text);
 	},
 };

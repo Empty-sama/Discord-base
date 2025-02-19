@@ -2,10 +2,10 @@ const { Client, Events, GatewayIntentBits, Collection, ClientPresence } = requir
 const fs = require('node:fs');
 const path = require('node:path');
 const { QuickDB } = require("quick.db");
-const { connect } = require('mongoose');
-const Eco = require("quick.eco");
+// const { connect } = require('mongoose');
+// const Eco = require("quick.eco");
 
-const token = process.env.TOKEN || ' ';
+const token = process.env.TOKEN || '';
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds]
@@ -17,21 +17,7 @@ client.once(Events.ClientReady, c => {
 
 client.commands = new Collection();
 
-// client.eco = new Eco.Manager();
-// client.DB = Eco.db;
-
-
-connect('mongodb+srv://shadow:yuukaislove@yoruichi.x0d8g.mongodb.net/?retryWrites=true&w=majority&appName=Yoruichi')
-console.log('Connected to the Database')
-//////////DATABASE\\\\\\\\\\
-global.db = new QuickDB();
-const _mods = db.get('mods')
-const mods = _mods || []
-const _user = db.get('user')
-const user = _user || []
-const _wallet = db.get('wallet')
-const wallet = _wallet || []
-
+const db = new QuickDB();
 
 client.login(token)
 
@@ -79,3 +65,13 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 });
+
+// quickdb way of adding message count
+// client.on("messageCreate", async (message) => {
+// 	const authorId = message.author.id;
+  
+// 	await db.add(`messageCount_${authorId}`, 1);
+  
+// 	let messageCount = await db.get(`messageCount_${authorId}`);
+// 	console.log(`User with the ID of ${authorId} has ${messageCount} messages.`);
+//   });
