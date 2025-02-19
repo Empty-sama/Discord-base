@@ -5,7 +5,7 @@ const { QuickDB } = require("quick.db");
 const { connect } = require('mongoose');
 const Eco = require("quick.eco");
 
-const token = process.env.TOKEN || '';
+const token = process.env.TOKEN || ' ';
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds]
